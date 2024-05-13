@@ -1,12 +1,16 @@
 module.exports = ({ env }) => ({
-  "vercel-deploy": {
+  "netlify-deployments": {
     enabled: true,
     config: {
-      deployHook: process.env.VERCEL_DEPLOY_PLUGIN_HOOK,
-      apiToken: process.env.VERCEL_DEPLOY_PLUGIN_API_TOKEN,
-      appFilter: process.env.VERCEL_DEPLOY_PLUGIN_APP_FILTER,
-      teamFilter: process.env.VERCEL_DEPLOY_PLUGIN_TEAM_FILTER,
-      roles: ["strapi-super-admin", "strapi-editor", "strapi-author"],
+      accessToken: process.env.NETLIFY_DEPLOYMENTS_PLUGIN_ACCESS_TOKEN,
+      sites: [
+        {
+          name: "nyanyan-cms",
+          id: "911aa6e9-4771-4577-a2a7-a1666b4c32d2",
+          buildHook: "https://api.netlify.com/build_hooks/6641c16e1107b27047a0be33",
+          branch: "main", // optional
+        },
+      ],
     },
   },
 });
